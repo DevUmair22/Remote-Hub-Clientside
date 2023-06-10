@@ -7,7 +7,7 @@ const Header = () => {
 				<ul className="flex flex-wrap py-1 pt-2 font-medium ">
 					<li className="px-2 group scale-90 text-xl text-secondary-light hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 						<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-							Become a Seller
+							Become a Seller.
 						</span>
 					</li>
 					{list.map((item) => (
