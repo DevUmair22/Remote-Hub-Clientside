@@ -80,7 +80,7 @@ const Footer = () => {
 					</div>
 				</div>
 				<hr className=" border-gray-200 sm:mx-auto" />
-				<span className="block text-sm text-secondary-dark sm:text-center pt-5 ">
+				<span className="block text-sm text-secondary-dark sm:text-center py-5 ">
 					© 2023 RemoteHub | All Rights Reserved.
 				</span>
 			</div>
