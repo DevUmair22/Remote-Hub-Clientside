@@ -1,4 +1,4 @@
-import MainLayout from '../elements/components/Layout.jsx'
+import MainLayout from '../elements/components/Layout/Layout.jsx'
 const Home = () => {
 	return (
 		<MainLayout>
