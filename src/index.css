@@ -15,3 +15,36 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 		monospace;
 }
+
+.tagline h1 {
+	font-family: monospace;
+	text-transform: uppercase;
+	letter-spacing: -5px !important;
+	/* background: linear-gradient(
+		to right,
+		hsl(124, 90%, 32%) 0,
+		hsl(118, 95%, 17%) 10%,
+		hsl(120, 8%, 95%) 20%
+	); */
+	background: linear-gradient(
+		to right,
+		hsl(0, 0%, 60%) 0,
+		hsl(0, 0%, 100%) 10%,
+		hsl(0, 0%, 60%) 30%
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: shine 5s infinite linear;
+}
+
+@keyframes shine {
+	0% {
+		background-position: 0;
+	}
+	60% {
+		background-position: 600px;
+	}
+	100% {
+		background-position: 600px;
+	}
+}

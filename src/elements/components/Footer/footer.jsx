@@ -3,7 +3,7 @@ import React from 'react'
 
 const Footer = () => {
 	return (
-		<footer className="bg-background mx-0 mt-2 h-auto">
+		<footer className="bg-background mx-0 mt-2 h-auto shadow-inner">
 			<div className="w-full mx-auto px-4 pt-4 pb-0">
 				<div className="flex flex-wrap ">
 					{array.map((item, index) => (
@@ -39,7 +39,7 @@ const Footer = () => {
 					))}
 				</div>
 
-				<div className=" flex flex-wrap h-full w-full border  px-4 py-6">
+				<div className=" flex flex-wrap h-full w-full border rounded-md px-4 py-6">
 					<div className="w-[4/12] pl-5">
 						{' '}
 						<span className="self-center text-primary text-3xl font-semibold whitespace-nowrap ">

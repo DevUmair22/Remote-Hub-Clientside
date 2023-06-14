@@ -4,10 +4,12 @@ const Register = () => {
 	return (
 		<MainLayout>
 			<div className="flex flex-wrap justify-center py-10">
-				<div class="flex flex-col items-center mx-auto pt-5  rounded-lg">
-					<p className="text-2xl font-bold">Sign up on RemoteHub</p>
+				<div class="flex flex-col bg-primary text-secondary-light items-center mx-auto pt-2  rounded-lg divide-y divide-secondary-light divide-dashed">
+					<p className="text-2xl text-gray-100 py-4 font-bold">
+						Register an account
+					</p>
 
-					<div class="w-full bg-teal-950 border-gray-500 rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+					<div class="w-full bg-teal-950 border-gray-500 rounded-b-lg shadow md:mt-0 sm:max-w-md xl:p-0">
 						<div class="p-6 space-y-4 md:space-y-6 sm:p-8">
 							<form class="space-y-4 md:space-y-6" action="#">
 								<div>
@@ -18,8 +20,8 @@ const Register = () => {
 										Select Role Type
 									</label>
 									<select
-										id="countries"
-										class="bg-gray-100 border border-secondary-light text-gray-900 text-sm rounded-lg  focus:outline-none focus:ring focus:ring-teal-700 block w-full p-2.5 "
+										id="role"
+										class="bg-gray-100 border-2  border border-teal-600 text-gray-900 text-sm rounded-lg  focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
 									>
 										<option value="serviceprovider" selected>
 											Service Provider
@@ -39,7 +41,7 @@ const Register = () => {
 											type="email"
 											name="email"
 											id="email"
-											class="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+											class="bg-gray-50 border-2  border border-teal-600 text-black sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											placeholder="First Name"
 											required=""
 										/>
@@ -56,7 +58,7 @@ const Register = () => {
 											name="password"
 											id="password"
 											placeholder="Last Name"
-											class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											required=""
 										/>
 									</div>
@@ -73,7 +75,7 @@ const Register = () => {
 											type="email"
 											name="email"
 											id="email"
-											class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											placeholder="Example@email.com"
 											required=""
 										/>
@@ -90,7 +92,7 @@ const Register = () => {
 											name="password"
 											id="password"
 											placeholder="+123456789"
-											class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
 											required=""
 										/>
 									</div>
@@ -107,7 +109,7 @@ const Register = () => {
 											type="email"
 											name="email"
 											id="email"
-											class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											placeholder="Password"
 											required=""
 										/>
@@ -124,7 +126,7 @@ const Register = () => {
 											name="password"
 											id="password"
 											placeholder="Confirm Password"
-											class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+											class="bg-gray-50 border-2 border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
 											required=""
 										/>
 									</div>
