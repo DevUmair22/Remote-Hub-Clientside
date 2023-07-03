@@ -1,15 +1,11 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
-
-// import Blogs from "../pages/Blogs/blogs"
+import DashBoard from "../elements/DashBoard"
 import Login from "../elements/components/Login _ Registration/Login"
 import Register from "../elements/components/Login _ Registration/Register"
+import Profile from "../elements/components/Service Profile/Profile"
 import Home from "../pages/Home.jsx"
-// import BuildingMaterialRates from "../pages/BuildingMaterialRates/BuildingMaterialRates"
-// import Vendors from "../pages/vendors/Vendors"
-// import FloorPlans from "../pages/FloorPlans/floorPlans"
-// import LoginPage from "../pages/Login/login"
-// import SignupPage from "../pages/Signup/signup"
-// import VenderProfile from "../pages/vendors/venderProfile"
+import Services from "../pages/Services"
+
 function AppRoutes() {
    return (
       <Router>
@@ -17,13 +13,10 @@ function AppRoutes() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* <Route path="/blogs" element={<Blogs />} />
-         <Route path="/material-rates" element={<BuildingMaterialRates />} />
-         <Route path="/venders" element={<Vendors />} />
-         <Route path="/floor-plans" element={<FloorPlans />} />
-         <Route path="/login" element={<LoginPage />} />
-         <Route path="/sign-up" element={<SignupPage />} />
-         <Route path="/vender-profile" element={<VenderProfile />} /> */}
+            <Route path="/services" element={<Services />} />
+            <Route path="/dashboard" element={<DashBoard />} />
+            <Route path="/profile" element={<Profile />} />
+
          </Routes>
       </Router>)
 }
