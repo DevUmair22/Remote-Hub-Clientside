@@ -230,7 +230,7 @@ const Tech = () => {
 			<div className="w-full p-12 h-full">
 				<div className="text-center mb-10">
 					<h2 className="text-3xl font-bold py-2 m-tb0">
-						Technologies We Love Working With
+						Technologies That Our Developers Love Working With
 					</h2>
 					<p className="text-lg px-16 py-2">
 						Our pool of languages and frameworks used provide you with the best

@@ -1,6 +1,6 @@
 import React from 'react'
-
 import Slide from 'react-reveal/Slide'
+import { Link } from 'react-router-dom'
 
 const How = () => {
 	const array = [
@@ -74,12 +74,14 @@ const How = () => {
 						))}
 					</div>
 					<div className="flex w-full pt-10">
-						<button
-							type="submit"
-							className="mx-auto rounded-md bg-secondary-light px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-secondary-dark active:bg-teal-900 active:text-white focus:ring-2 focus:ring-teal-900 "
-						>
-							Register Now
-						</button>
+						<Link to={'/register'}>
+							<button
+								type="submit"
+								className="mx-auto rounded-md bg-secondary-light px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-secondary-dark active:bg-teal-900 active:text-white focus:ring-2 focus:ring-teal-900 "
+							>
+								Register Now
+							</button>
+						</Link>
 					</div>
 				</>
 			))}

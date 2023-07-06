@@ -5,10 +5,10 @@ import BasicCard from '../Cards/PrimaryCard/BasicCard'
 const proData = [
 	{
 		name: 'Umair Malik',
-		role: 'Front End Developer',
-		exp: '4 years',
+		role: 'DevOps Engineer ',
+		exp: '8 years',
 		rate: '30$',
-		jobs: '10',
+		jobs: '13',
 		img: { icon },
 	},
 	{
@@ -20,20 +20,11 @@ const proData = [
 		img: { icon },
 	},
 	{
-		name: 'Umair Malik',
-		role: 'Front End Developer',
-		exp: '4 years',
-		rate: '30$',
-		jobs: '10',
-		img: { icon },
-	},
-
-	{
-		name: 'Umair Malik',
-		role: 'Front End Developer',
-		exp: '4 years',
-		rate: '30$',
-		jobs: '10',
+		name: 'Uzair Malik',
+		role: 'Backend End Developer',
+		exp: '10 years',
+		rate: '20$',
+		jobs: '18',
 		img: { icon },
 	},
 ]
@@ -48,7 +39,7 @@ const TopTalent = () => {
 
 				<div className="flex flex-wrap mx-auto">
 					{proData.map((item) => (
-						<div className="w-1/4 mx-auto">
+						<div className="w-2/6 mx-auto">
 							<BasicCard data={item} />
 						</div>
 					))}

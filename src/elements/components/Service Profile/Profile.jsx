@@ -1,13 +1,153 @@
+import ContactPhoneOutlinedIcon from '@mui/icons-material/ContactPhoneOutlined'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import PaymentOutlinedIcon from '@mui/icons-material/PaymentOutlined'
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined'
+import VerifiedIcon from '@mui/icons-material/Verified'
+import Chip from '@mui/material/Chip'
 import React from 'react'
 import icon from '../../../images/icon.jpg'
 const Profile = () => {
 	return (
 		<>
 			<div className="h-full flex flex-wrap w-full p-5 text-primary">
-				<div className="w-4/12 h-screen mx-auto pr-4 ">
-					<div className="h-full border-2 shadow-xl rounded-xl py-8 px-4   ">
-						dgshdjh
+				<div className="w-4/12 mx-auto pr-4 ">
+					<div className="h-full border-2 shadow-xl rounded-xl py-8 px-6 divide-y   ">
+						<div className="py-4">
+							{' '}
+							<h1 className="text-lg font-semibold">Skills</h1>
+							<ul className="flex flex-wrap justify-center pt-2">
+								<li className="mx-auto mb-1">
+									{' '}
+									<Chip label="HardWorking" variant="outlined" />
+								</li>
+								<li className="mx-auto">
+									{' '}
+									<Chip label="HardWorking" variant="outlined" />
+								</li>
+								<li className="mx-auto">
+									{' '}
+									<Chip label="HardWorking" variant="outlined" />
+								</li>
+								<li className="mx-auto">
+									{' '}
+									<Chip label="HardWorking" variant="outlined" />
+								</li>
+								<li className="mx-auto">
+									{' '}
+									<Chip label="HardWorking" variant="outlined" />
+								</li>
+								<li className="mx-auto">
+									{' '}
+									<Chip label="HardWorking" variant="outlined" />
+								</li>
+							</ul>
+						</div>
+						<div className="pt-1 pb-4">
+							<h1 className="text-lg font-semibold">Languages</h1>
+							<ul className="py-2 text-primary flex">
+								<li className="pt-1 text-md px-4">English </li>
+
+								<li className="pt-1 text-md px-4">Urdu </li>
+
+								<li className=" pt-1 text-md px-4">Spanish </li>
+							</ul>
+						</div>
+						<div>
+							<h1 className="text-lg pt-2 font-semibold">
+								Social Verification
+							</h1>
+							<ul className="py-2">
+								<li className="flex py-1">
+									<GitHubIcon />
+									<p className="pl-2 pr-2 w-36">GitHub</p>
+									<VerifiedIcon color="success" />
+								</li>
+								<li className="flex py-1">
+									<LinkedInIcon />
+									<p className="pl-2 pr-2 w-36">LinkedIn</p>
+									<VerifiedIcon color="success" />
+								</li>
+								<li className="flex py-1">
+									<ContactPhoneOutlinedIcon />
+									<p className="pl-2  pr-2 w-36">Phone</p>
+
+									<VerifiedIcon color="success" />
+								</li>
+								<li className="flex py-1">
+									<PaymentOutlinedIcon />
+									<p className="pl-2 pr-2 w-36">National ID</p>
+
+									<VerifiedIcon color="success" />
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h1 className="text-lg pt-2 font-semibold">Achievements</h1>
+							<ul className=" pt-2 divide-y">
+								<li className="mx-auto mb-1 py-2">
+									<h1 className="text-md font-medium">
+										Introduction to Cyber Security - Coursera
+									</h1>
+									<p className="text-blue-600 underline cursor-pointer">
+										https://www.coursera.org/
+									</p>
+								</li>
+								<li className="mx-auto mb-1 py-2">
+									<h1 className="text-md font-medium">
+										Introduction to Cyber Security - Coursera
+									</h1>
+									<p className="text-blue-600 underline cursor-pointer">
+										https://www.coursera.org/
+									</p>
+								</li>
+								<li className="mx-auto mb-1 py-2">
+									<h1 className="text-md font-medium">
+										Introduction to Cyber Security - Coursera
+									</h1>
+									<p className="text-blue-600 underline cursor-pointer">
+										https://www.coursera.org/
+									</p>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<h1 className="text-lg pt-2 font-semibold">
+								Familiar Tools and Technologies
+							</h1>
+							<ul className="flex flex-wrap pt-2">
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="filled" />
+								</li>
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="outlined" />
+								</li>
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="outlined" />
+								</li>
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="outlined" />
+								</li>
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="outlined" />
+								</li>
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="outlined" />
+								</li>
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="outlined" />
+								</li>
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="outlined" />
+								</li>
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="outlined" />
+								</li>
+								<li className="mx-auto mb-1">
+									<Chip label="Slack" variant="outlined" />
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div className=" w-8/12 h-full mx-auto">
@@ -36,7 +176,7 @@ const Profile = () => {
 							<h3 className="text-xl font-semibold text-center text-primary py-2 underline underline-secondary-light">
 								About Me
 							</h3>
-							<p className="px-4 text-sm font-medium text-primary">
+							<p className="px-5 text-sm font-medium text-primary py-2">
 								lorem is a text and ipsum is it messagelorem is a text and ipsum
 								is it message lorem is a text and ipsum is it message lorem is a
 								text and ipsum is it message lorem is a text and ipsum is it
@@ -46,8 +186,8 @@ const Profile = () => {
 								lorem is a text and ipsum is it message
 							</p>
 						</div>
-						<div>
-							<RoomOutlinedIcon />
+						<div className="pt-4 items-end">
+							<RoomOutlinedIcon className="mx-1 text-secondary-light" />
 							From Islamabad, Pakistan
 						</div>
 					</div>

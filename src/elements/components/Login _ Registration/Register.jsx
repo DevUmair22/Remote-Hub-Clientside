@@ -32,15 +32,15 @@ const Register = () => {
 								<div className="flex justify-between">
 									<div>
 										<label
-											for="email"
+											for="firstname"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											FirstName
 										</label>
 										<input
-											type="email"
-											name="email"
-											id="email"
+											type="text"
+											name="firstname"
+											id="firstname"
 											class="bg-gray-50 border-2  border border-teal-600 text-black sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											placeholder="First Name"
 											required=""
@@ -48,15 +48,15 @@ const Register = () => {
 									</div>
 									<div>
 										<label
-											for="password"
+											for="lastname"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											LastName
 										</label>
 										<input
-											type="test"
-											name="password"
-											id="password"
+											type="text"
+											name="lastname"
+											id="lastname"
 											placeholder="Last Name"
 											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											required=""
@@ -82,15 +82,15 @@ const Register = () => {
 									</div>
 									<div>
 										<label
-											for="password"
+											for="phone"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											Phone #
 										</label>
 										<input
-											type="text"
-											name="password"
-											id="password"
+											type="number"
+											name="phone"
+											id="phone"
 											placeholder="+123456789"
 											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
 											required=""
@@ -100,15 +100,15 @@ const Register = () => {
 								<div className="flex justify-between">
 									<div>
 										<label
-											for="email"
+											for="password"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											Password
 										</label>
 										<input
-											type="email"
-											name="email"
-											id="email"
+											type="password"
+											name="password"
+											id="password"
 											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											placeholder="Password"
 											required=""
@@ -116,15 +116,15 @@ const Register = () => {
 									</div>
 									<div>
 										<label
-											for="password"
+											for="cpassword"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											Confirm Password
 										</label>
 										<input
-											type="test"
-											name="password"
-											id="password"
+											type="password"
+											name="cpassword"
+											id="cpassword"
 											placeholder="Confirm Password"
 											class="bg-gray-50 border-2 border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
 											required=""

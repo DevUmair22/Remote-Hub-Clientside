@@ -29,12 +29,17 @@ const Header2 = ({ state }) => {
 					</p>
 				</div>
 				<div className="flex text-md w-full pt-1 px-2 mx-8 my-auto text-primary font-semibold mr-0">
-					<div className="pr-4 py-2 group scale-90 text-lg text-secondary-light hover:text-primary hover:scale-95 cursor-pointer font-semibold">
+					<div className="pr-2 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
+						<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+							<Link to={'/profile'}>Profile</Link>
+						</span>
+					</div>
+					<div className="pr-2 py-2 group scale-90 text-lg text-secondary-light hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 						<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
 							<Link to={'/register'}>Sign Up as Talent.</Link>
 						</span>
 					</div>
-					<div className="pr-4 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
+					<div className="pr-2 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 						<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
 							<Link to={'/register'}>Hirings</Link>
 						</span>

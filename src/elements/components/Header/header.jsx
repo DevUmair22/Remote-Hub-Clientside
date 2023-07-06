@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const list = ['Services', ' About', 'Help', ' Affiliates']
+const list = ['Services', ' About', 'Help']
 const Header = () => {
 	return (
 		<div className="flex mx-auto w-full px-2 py-2 bg-gray-100 items-center shadow-xl">
@@ -29,10 +29,15 @@ const Header = () => {
 				</p>
 			</div>
 			<div className="flex text-md w-[40%] pt-1 px-2 my-auto text-primary justify-end font-semibold mr-0">
-				<button className="px-3 py-2"> Login</button>
-				<button className="px-3 py-1 rounded-lg border border-2 border-secondary-light">
-					Join
-				</button>
+				<Link to={'/login'}>
+					{' '}
+					<button className="px-3 py-2"> Login</button>
+				</Link>
+				<Link to={'/register'}>
+					<button className="px-3 py-1 rounded-lg border border-2 border-secondary-light">
+						Join
+					</button>
+				</Link>
 			</div>
 		</div>
 	)
