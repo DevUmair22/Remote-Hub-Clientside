@@ -1,10 +1,14 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import icon from '../../../images/icon.jpg'
 import SearchBar from '../SearchModule/SearchBar'
+
 const Header2 = ({ state }) => {
 	const [isOpen, setIsOpen] = useState(false)
-
+	const navigate = useNavigate()
+	const handleNavigation = () => {
+		navigate('/logout')
+	}
 	const toggleDropdown = () => {
 		setIsOpen(!isOpen)
 	}
@@ -80,7 +84,10 @@ const Header2 = ({ state }) => {
 										Help and Support
 									</li>
 								</ul>
-								<div className="cursor-pointer hover:text-secondary-dark focus:text-secondary-dark py-2 px-4 text-lg">
+								<div
+									className="cursor-pointer hover:text-secondary-dark focus:text-secondary-dark py-2 px-4 text-lg"
+									onClick={handleNavigation}
+								>
 									Sign out
 								</div>
 							</div>

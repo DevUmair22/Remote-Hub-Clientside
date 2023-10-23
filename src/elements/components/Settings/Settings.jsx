@@ -47,7 +47,7 @@ const Settings = () => {
 								<div className="px-8">
 									<div className="mb-6 flex items-end py-4">
 										<label
-											for="firstname"
+											htmlFor="firstname"
 											className="block mb-1 text-lg px-4 font-medium text-primary "
 										>
 											Firstname:
@@ -61,7 +61,7 @@ const Settings = () => {
 									</div>
 									<div className="mb-6 flex items-end py-4">
 										<label
-											for="lastname"
+											htmlFor="lastname"
 											className="block mb-1 text-lg px-4 font-medium text-primary "
 										>
 											Lastname:
@@ -75,7 +75,7 @@ const Settings = () => {
 									</div>
 									<div className="mb-6 flex items-end py-4">
 										<label
-											for="email"
+											htmlFor="email"
 											className="block mb-1 text-lg px-4 mr-8 font-medium text-primary "
 										>
 											Email:
@@ -89,7 +89,7 @@ const Settings = () => {
 									</div>
 									<div className="mb-6 flex items-end py-4">
 										<label
-											for="email"
+											htmlFor="email"
 											className="block mb-1 text-lg px-4 mr-6 font-medium text-primary "
 										>
 											Phone:
@@ -123,7 +123,7 @@ const Settings = () => {
 							<form>
 								<div className="mb-6 flex justify-around items-end py-4">
 									<label
-										for="opassword"
+										htmlFor="opassword"
 										className="block mb-1 text-lg px-4 font-medium text-primary "
 									>
 										Old Password:
@@ -136,7 +136,7 @@ const Settings = () => {
 								</div>
 								<div className="mb-6 flex justify-around  items-end py-4">
 									<label
-										for="npassword"
+										htmlFor="npassword"
 										className="block mb-1 text-lg px-4 font-medium text-primary "
 									>
 										New Password:
@@ -149,7 +149,7 @@ const Settings = () => {
 								</div>
 								<div className=" flex justify-around items-end py-4">
 									<label
-										for="cnpassword"
+										htmlFor="cnpassword"
 										className="block mb-1 text-lg px-4 font-medium text-primary "
 									>
 										Confirm Password:
@@ -182,7 +182,7 @@ const Settings = () => {
 								</div>
 								<div className="mb-6 flex justify-around items-end py-4">
 									<label
-										for="vfone"
+										htmlFor="vfone"
 										className="block mb-1 text-lg px-4 font-medium text-primary "
 									>
 										Verify Phone:
@@ -202,7 +202,7 @@ const Settings = () => {
 								</div>
 								<div className="mb-6 flex justify-around items-end py-4">
 									<label
-										for="secphrase"
+										htmlFor="secphrase"
 										className="block mb-1 text-lg px-4 font-medium text-primary "
 									>
 										Security Phrase:
@@ -234,7 +234,7 @@ const Settings = () => {
 									<div className="pb-2 w-2/4 mx-4">
 										{' '}
 										<label
-											for="name"
+											htmlFor="name"
 											className="block mb-1 text-lg  font-medium text-primary "
 										>
 											FullName:
@@ -248,7 +248,7 @@ const Settings = () => {
 									</div>
 									<div className="pb-2 w-2/4 mx-4">
 										<label
-											for="name"
+											htmlFor="name"
 											className="block mb-1 text-lg  font-medium text-primary "
 										>
 											Company Name:
@@ -265,7 +265,7 @@ const Settings = () => {
 									<div className="pb-2 w-2/4 mx-4">
 										{' '}
 										<label
-											for="cname"
+											htmlFor="cname"
 											className="block mb-1 text-lg  font-medium text-primary "
 										>
 											Country:
@@ -279,7 +279,7 @@ const Settings = () => {
 									</div>
 									<div className="pb-2 w-2/4 mx-4">
 										<label
-											for="pname"
+											htmlFor="pname"
 											className="block mb-1 text-lg  font-medium text-primary "
 										>
 											Province/State:
@@ -294,7 +294,7 @@ const Settings = () => {
 								</div>
 								<div className="mb-2 mx-4 px-4 justify-around py-4">
 									<label
-										for="address"
+										htmlFor="address"
 										className="block mb-1 text-lg  font-medium text-primary "
 									>
 										Billing Address:
@@ -310,7 +310,7 @@ const Settings = () => {
 									<div className="mb-6 w-2/4 mx-4">
 										{' '}
 										<label
-											for="city"
+											htmlFor="city"
 											className="block mb-1 text-lg  font-medium text-primary "
 										>
 											City:
@@ -324,7 +324,7 @@ const Settings = () => {
 									</div>
 									<div className="mb-6 w-2/4 mx-4">
 										<label
-											for="post"
+											htmlFor="post"
 											className="block mb-1 text-lg  font-medium text-primary "
 										>
 											Postal Code:
@@ -339,7 +339,7 @@ const Settings = () => {
 								</div>
 								<div className="mb-2 mx-4 px-4 justify-around py-4">
 									<label
-										for="vat"
+										htmlFor="vat"
 										className="block mb-1 text-lg  font-medium text-primary "
 									>
 										VAT Number:

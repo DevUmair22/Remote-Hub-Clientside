@@ -52,13 +52,13 @@ const How = () => {
 				</p>
 			</div>
 			{array.map((item, index) => (
-				<>
-					<div className="divide-x-2 divide-teal-950 pt-10" key={index}>
+				<div key={index}>
+					<div className="divide-x-2 divide-teal-950 pt-10">
 						<div className="text-left text-3xl font-bold px-10 pb-10 decoration-teal-500 underline text-primary underline-offset-4">
 							{item.title}
 						</div>
-						{item.data.map((itemm, index) => (
-							<div className="px-10 py-4" key={index}>
+						{item.data.map((itemm, indexx) => (
+							<div className="px-10 py-4" key={indexx}>
 								<Slide bottom>
 									<div className="h-50 border-2 px-10 py-4 bg-white text-gray-600 shadow-xl shadow-gray-400 rounded-xl pb-5 w-full">
 										<div className="text-lg text-teal-500 font-bold py-2">
@@ -83,7 +83,7 @@ const How = () => {
 							</button>
 						</Link>
 					</div>
-				</>
+				</div>
 			))}
 		</div>
 	)

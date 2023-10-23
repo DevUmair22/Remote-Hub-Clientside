@@ -14,7 +14,7 @@ const Register = () => {
 							<form class="space-y-4 md:space-y-6" action="#">
 								<div>
 									<label
-										for="countries"
+										htmlFor="countries"
 										class="block mb-2 text-sm font-medium text-white "
 									>
 										Select Role Type
@@ -32,7 +32,7 @@ const Register = () => {
 								<div className="flex justify-between">
 									<div>
 										<label
-											for="firstname"
+											htmlFor="firstname"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											FirstName
@@ -48,7 +48,7 @@ const Register = () => {
 									</div>
 									<div>
 										<label
-											for="lastname"
+											htmlFor="lastname"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											LastName
@@ -66,7 +66,7 @@ const Register = () => {
 								<div className="flex justify-between">
 									<div>
 										<label
-											for="email"
+											htmlFor="email"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											Email Address
@@ -82,7 +82,7 @@ const Register = () => {
 									</div>
 									<div>
 										<label
-											for="phone"
+											htmlFor="phone"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											Phone #
@@ -100,7 +100,7 @@ const Register = () => {
 								<div className="flex justify-between">
 									<div>
 										<label
-											for="password"
+											htmlFor="password"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											Password
@@ -116,7 +116,7 @@ const Register = () => {
 									</div>
 									<div>
 										<label
-											for="cpassword"
+											htmlFor="cpassword"
 											className="block mb-1 text-sm font-medium text-white "
 										>
 											Confirm Password
@@ -145,7 +145,7 @@ const Register = () => {
 										</div>
 										<div class="ml-3 text-sm">
 											<label
-												for="remember"
+												htmlFor="remember"
 												className="block mb-1 text-sm font-light text-white "
 											>
 												By{' '}

@@ -11,8 +11,11 @@ const Header = () => {
 							<Link to={'/register'}>Become a Seller.</Link>
 						</span>
 					</li>
-					{list.map((item) => (
-						<li className="px-1 group scale-90 text-lg text-primary hover:text-teal-900 hover:scale-95 cursor-pointer font-semibold">
+					{list.map((item, index) => (
+						<li
+							className="px-1 group scale-90 text-lg text-primary hover:text-teal-900 hover:scale-95 cursor-pointer font-semibold"
+							key={index}
+						>
 							<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
 								<Link to={'/services'}> {item}</Link>
 							</span>{' '}

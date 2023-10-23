@@ -38,8 +38,8 @@ const TopTalent = () => {
 				</div>
 
 				<div className="flex flex-wrap mx-auto">
-					{proData.map((item) => (
-						<div className="w-2/6 mx-auto">
+					{proData.map((item, index) => (
+						<div className="w-2/6 mx-auto" key={index}>
 							<BasicCard data={item} />
 						</div>
 					))}

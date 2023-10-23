@@ -1,6 +1,78 @@
-import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import MainLayout from '../Layout/Layout.jsx'
+
 const Login = () => {
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [showPassword, setShowPassword] = useState(false)
+	const [invalidPasswordError, setInvalidPasswordError] = useState(false)
+	const [status, setStatus] = useState('')
+	const [rememberMe, setRememberMe] = useState(false)
+	const endPoint = process.env.REACT_APP_BASE_URL
+
+	const handleRememberMeChange = () => {
+		setRememberMe(!rememberMe)
+		localStorage.setItem('rememberedEmail', email)
+		localStorage.setItem('rememberedPassword', password)
+	}
+
+	useEffect(() => {
+		const userToken = localStorage.getItem('user-token')
+
+		if (userToken) {
+			// If user is already logged in then redirect to the dashboard
+			window.location.href = '/dashboard'
+		}
+
+		const rememberedEmail = localStorage.getItem('rememberedEmail')
+		const rememberedPassword = localStorage.getItem('rememberedPassword')
+
+		if (rememberedEmail && rememberedPassword) {
+			setEmail(rememberedEmail)
+			setPassword(rememberedPassword)
+			setRememberMe(true)
+		}
+	}, [])
+
+	const handleLogin = async () => {
+		try {
+			const response = await axios.post(
+				`http://${endPoint}:8080/user/auth/login/`,
+				{
+					email,
+					password,
+				}
+			)
+
+			if (response.status === 200) {
+				const user = JSON.stringify(response.data.userData)
+				console.log('@@@@@@@@@@@', response.data)
+				setStatus('Login successful!')
+
+				localStorage.setItem('user-token', response.data.accessToken)
+				localStorage.setItem('isAdmin', response.data.userData.isAdmin)
+				localStorage.setItem('user', user)
+
+				setTimeout(() => {
+					window.location.href = '/dashboard'
+				}, 500)
+
+				if (rememberMe) {
+					sessionStorage.setItem('rememberedEmail', email)
+					sessionStorage.setItem('rememberedPassword', password)
+				}
+			} else {
+				setStatus('Login failed. Please check your credentials.')
+			}
+		} catch (error) {
+			console.log('error', error.response)
+			setStatus(error.response)
+		}
+	}
+
 	return (
 		<MainLayout>
 			<div className="flex flex-wrap justify-center py-10">
@@ -11,14 +83,15 @@ const Login = () => {
 						</h5>
 						<div>
 							<label
-								for="email"
+								htmlFor="email"
 								className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 							>
 								Email or username
 							</label>
 							<input
 								type="email"
-								name="email"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
 								id="email"
 								className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-secondary-light focus:border-secondary-light block w-full p-2.5"
 								placeholder="name@company.com"
@@ -27,19 +100,30 @@ const Login = () => {
 						</div>
 						<div>
 							<label
-								for="password"
+								htmlFor="password"
 								className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 							>
 								Password
 							</label>
-							<input
-								type="password"
-								name="password"
-								id="password"
-								placeholder="••••••••"
-								className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-secondary-light focus:border-secondary-light block w-full p-2.5 "
-								required
-							/>
+							<div className="flex">
+								<input
+									type={showPassword ? 'text' : 'password'}
+									id="password"
+									placeholder="••••••••"
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
+									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-secondary-light focus:border-secondary-light block w-full p-2.5 "
+									required
+								/>
+
+								<FontAwesomeIcon
+									icon={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+									size="lg"
+									className="text-gray-500 hover:text-blue-500 cursor-pointer -ml-8 my-auto"
+									onClick={() => setShowPassword(!showPassword)}
+								/>
+							</div>
+							<p>{status}</p>
 						</div>
 						<div className="flex items-start">
 							<div className="flex items-start">
@@ -49,34 +133,43 @@ const Login = () => {
 										type="checkbox"
 										value=""
 										className="w-4 h-4 rounded bg-gray-50 accent-secondary-light"
-										required
+										checked={rememberMe}
+										onChange={handleRememberMeChange}
 									/>
 								</div>
 								<label
-									for="remember"
+									htmlFor="remember"
 									className="ml-2 text-sm font-medium text-gray-100 "
 								>
 									Remember me
 								</label>
 							</div>
-							<a
-								href="#"
+							<Link
+								href="/"
 								className="ml-auto text-sm text-secondary-light hover:underline "
 							>
 								Forgot Password?
-							</a>
+							</Link>
 						</div>
 						<button
 							type="submit"
 							className=" flex mx-auto w-[2/4] text-white bg-secondary-light scale-100 hover:bg-secondary-dark focus:bg-secondary-dark hover:text-gray-100 font-bold rounded-lg text-md px-10 py-2 text-center "
+							onClick={handleLogin}
 						>
 							Continue
 						</button>
+						<p className="status">{status}</p>
+						{invalidPasswordError && (
+							<p className="error-message">Invalid password.</p>
+						)}
 						<div className="text-sm font-medium text-gray-500 dark:text-gray-300">
 							Not registered?{' '}
-							<a href="#" className="text-secondary-light hover:underline ">
+							<Link
+								to="/register"
+								className="text-secondary-light hover:underline "
+							>
 								Create account
-							</a>
+							</Link>
 						</div>
 					</form>
 				</div>
