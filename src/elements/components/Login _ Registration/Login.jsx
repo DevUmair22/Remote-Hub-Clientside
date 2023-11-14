@@ -15,6 +15,7 @@ const Login = () => {
 
 	const handleRememberMeChange = () => {
 		setRememberMe(!rememberMe)
+
 		localStorage.setItem('rememberedEmail', email)
 		localStorage.setItem('rememberedPassword', password)
 	}
@@ -26,7 +27,7 @@ const Login = () => {
 			// If user is already logged in then redirect to the dashboard
 			window.location.href = '/dashboard'
 		}
-
+		//remembered email and password should move to session storage as  i am clearing localstorage on logout
 		const rememberedEmail = localStorage.getItem('rememberedEmail')
 		const rememberedPassword = localStorage.getItem('rememberedPassword')
 
@@ -49,7 +50,7 @@ const Login = () => {
 
 			if (response.status === 200) {
 				const user = JSON.stringify(response.data.userData)
-				console.log('@@@@@@@@@@@', response.data)
+				console.log('Response Data : ', response.data)
 				setStatus('Login successful!')
 
 				localStorage.setItem('user-token', response.data.accessToken)
@@ -60,10 +61,10 @@ const Login = () => {
 					window.location.href = '/dashboard'
 				}, 500)
 
-				if (rememberMe) {
-					sessionStorage.setItem('rememberedEmail', email)
-					sessionStorage.setItem('rememberedPassword', password)
-				}
+				// if (rememberMe) {
+				// 	sessionStorage.setItem('rememberedEmail', email)
+				// 	sessionStorage.setItem('rememberedPassword', password)
+				// }
 			} else {
 				setStatus('Login failed. Please check your credentials.')
 			}

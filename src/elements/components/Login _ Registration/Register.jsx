@@ -1,27 +1,151 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import MainLayout from '../Layout/Layout.jsx'
+
 const Register = () => {
+	const navigate = useNavigate()
+	const [firstName, setFirstName] = useState('')
+	const [lastName, setLastName] = useState('')
+	const [email, setEmail] = useState('')
+	const [phoneNumber, setPhoneNumber] = useState('')
+	const [roleType, setRoleType] = useState('')
+	const [password1, setPassword1] = useState('')
+	const [password2, setPassword2] = useState('')
+	const [confirmedPassword, setConfirmedPassword] = useState('')
+	const [status, setStatus] = useState('')
+
+	const handleSubmit = async () => {
+		try {
+			const response = await axios.post(
+				`http://localhost:8080/core/register/`,
+				{
+					firstName,
+					lastName,
+					email,
+					phoneNumber,
+					roleType,
+					confirmedPassword,
+				}
+			)
+
+			if (response.status === 201) {
+				setStatus('Registration Successful!')
+				Swal.fire({
+					icon: 'success',
+					title: status,
+					showConfirmButton: false,
+					timer: 2000,
+				}).then(() => {
+					navigate('/home')
+				})
+			} else {
+				setStatus('Registration failed.')
+				console.log('first', response)
+				Swal.fire({
+					icon: 'error',
+					title: status,
+					text: response.error,
+					showCloseButton: true,
+				})
+			}
+		} catch (error) {
+			setStatus(`An error occurred during registration.   `)
+			Swal.fire({
+				icon: 'error',
+				title: status,
+				text: error,
+				showCloseButton: true,
+			})
+		}
+	}
+	const handleFirstNameChange = (e) => {
+		setFirstName(e.target.value)
+		if (!e.target.value.match(/^[a-zA-Z\s]+$/)) {
+			setStatus('Name Should be Alphabet')
+			return
+		} else {
+			setStatus('')
+		}
+	}
+	const handleLastNameChange = (e) => {
+		setLastName(e.target.value)
+		if (!e.target.value.match(/^[a-zA-Z\s]+$/)) {
+			setStatus('Name Should be Alphabet')
+			return
+		} else {
+			setStatus('')
+		}
+	}
+	const hanldeEmailChange = (e) => {
+		setEmail(e.target.value)
+		if (
+			!e.target.value.match(
+				/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+			)
+		) {
+			setStatus('invalid email')
+			return
+		} else {
+			setStatus('')
+		}
+	}
+	const hanldePhoneChange = (e) => {
+		setPhoneNumber(e.target.value)
+		if (
+			!e.target.value.match(
+				/^((\+92)|(0092))-{0,1}\d{3}-{0,1}\d{7}$|^\d{11}$|^\d{4}-\d{7}$/
+			)
+		) {
+			setStatus('Invalid Syntax')
+			return
+		} else {
+			setStatus('')
+		}
+	}
+
+	const handlePasswordValidation = (e) => {
+		setPassword1(e.target.value)
+		if (password1.length < 8 && !password1.match(/[!@#%^&*]/)) {
+			setStatus(
+				'Password must be at least 8 characters long. Must contain 1 Capital Albhabet and 1 Special Chracter'
+			)
+			return
+		} else {
+			setStatus('')
+		}
+	}
+
+	const hanldePasswordConfirmation = (e) => {
+		password1 && setPassword2(e.target.value)
+
+		if (password1 === password2) {
+			setConfirmedPassword(e.target.value)
+		}
+	}
 	return (
 		<MainLayout>
 			<div className="flex flex-wrap justify-center py-10">
-				<div class="flex flex-col bg-primary text-secondary-light items-center mx-auto pt-2  rounded-lg divide-y divide-secondary-light divide-dashed">
+				<div className="flex flex-col bg-primary text-secondary-light items-center mx-auto pt-2  rounded-lg divide-y divide-secondary-light divide-dashed">
 					<p className="text-2xl text-gray-100 py-4 font-bold">
 						Register an account
 					</p>
 
-					<div class="w-full bg-teal-950 border-gray-500 rounded-b-lg shadow md:mt-0 sm:max-w-md xl:p-0">
-						<div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-							<form class="space-y-4 md:space-y-6" action="#">
+					<div className="w-full bg-teal-950 border-gray-500 rounded-b-lg shadow md:mt-0 sm:max-w-md xl:p-0">
+						<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+							<form className="space-y-4 md:space-y-6" action={handleSubmit}>
 								<div>
 									<label
 										htmlFor="countries"
-										class="block mb-2 text-sm font-medium text-white "
+										className="block mb-2 text-sm font-medium text-white "
 									>
 										Select Role Type
 									</label>
 									<select
 										id="role"
-										class="bg-gray-100 border-2  border border-teal-600 text-gray-900 text-sm rounded-lg  focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
+										className="bg-gray-100 border-2  border border-teal-600 text-gray-900 text-sm rounded-lg  focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
+										onChange={(e) => setRoleType(e.target.value)}
 									>
 										<option value="serviceprovider" selected>
 											Service Provider
@@ -41,9 +165,10 @@ const Register = () => {
 											type="text"
 											name="firstname"
 											id="firstname"
-											class="bg-gray-50 border-2  border border-teal-600 text-black sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
+											className="bg-gray-50 border-2  border border-teal-600 text-black sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											placeholder="First Name"
 											required=""
+											onChange={handleFirstNameChange}
 										/>
 									</div>
 									<div>
@@ -58,8 +183,9 @@ const Register = () => {
 											name="lastname"
 											id="lastname"
 											placeholder="Last Name"
-											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
+											className="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											required=""
+											onChange={handleLastNameChange}
 										/>
 									</div>
 								</div>
@@ -75,9 +201,10 @@ const Register = () => {
 											type="email"
 											name="email"
 											id="email"
-											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
+											className="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											placeholder="Example@email.com"
 											required=""
+											onChange={hanldeEmailChange}
 										/>
 									</div>
 									<div>
@@ -92,8 +219,9 @@ const Register = () => {
 											name="phone"
 											id="phone"
 											placeholder="+123456789"
-											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
+											className="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
 											required=""
+											onChange={hanldePhoneChange}
 										/>
 									</div>
 								</div>
@@ -109,9 +237,10 @@ const Register = () => {
 											type="password"
 											name="password"
 											id="password"
-											class="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
+											className="bg-gray-50 border-2  border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5"
 											placeholder="Password"
 											required=""
+											onChange={handlePasswordValidation}
 										/>
 									</div>
 									<div>
@@ -126,24 +255,25 @@ const Register = () => {
 											name="cpassword"
 											id="cpassword"
 											placeholder="Confirm Password"
-											class="bg-gray-50 border-2 border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
+											className="bg-gray-50 border-2 border border-teal-600 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
 											required=""
+											onChange={hanldePasswordConfirmation}
 										/>
 									</div>
 								</div>
 
-								<div class="flex items-center justify-between">
-									<div class="flex items-start">
-										<div class="flex items-center h-5">
+								<div className="flex items-center justify-between">
+									<div className="flex items-start">
+										<div className="flex items-center h-5">
 											<input
 												id="remember"
 												aria-describedby="remember"
 												type="checkbox"
-												class="w-4 h-4 border border-gray-300 rounded bg-gray-50 accent-teal-400 focus:ring-3 focus:ring-primary-300 "
+												className="w-4 h-4 border border-gray-300 rounded bg-gray-50 accent-teal-400 focus:ring-3 focus:ring-primary-300 "
 												required=""
 											/>
 										</div>
-										<div class="ml-3 text-sm">
+										<div className="ml-3 text-sm">
 											<label
 												htmlFor="remember"
 												className="block mb-1 text-sm font-light text-white "
@@ -166,11 +296,11 @@ const Register = () => {
 									</button>
 								</div>
 
-								<p class="text-sm font-light text-gray-200 ">
+								<p className="text-sm font-light text-gray-200 ">
 									Already have an account?{' '}
 									<a
 										href="/login"
-										class=" text-secondary-light font-bold hover:underline "
+										className=" text-secondary-light font-bold hover:underline "
 									>
 										LogIn
 									</a>

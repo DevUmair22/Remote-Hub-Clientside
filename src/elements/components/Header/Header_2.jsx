@@ -35,7 +35,7 @@ const Header2 = ({ state }) => {
 				<div className="flex text-md w-full pt-1 px-2 mx-8 my-auto text-primary font-semibold mr-0">
 					<div className="pr-2 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 						<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-							<Link to={'/profile'}>Profile</Link>
+							<Link to={'/profile'}> Profile</Link>
 						</span>
 					</div>
 					<div className="pr-2 py-2 group scale-90 text-lg text-secondary-light hover:text-primary hover:scale-95 cursor-pointer font-semibold">
@@ -72,6 +72,11 @@ const Header2 = ({ state }) => {
 								</div>
 								<ul className="py-2 px-4 text-md  ">
 									<li className="cursor-pointer hover:text-secondary-dark focus:text-secondary-dark py-2">
+										<div onClick={() => handleButtonClick('profile')}>
+											Profile
+										</div>
+									</li>
+									<li className="cursor-pointer hover:text-secondary-dark focus:text-secondary-dark py-2">
 										<div onClick={() => handleButtonClick('settings')}>
 											Settings
 										</div>
@@ -93,28 +98,6 @@ const Header2 = ({ state }) => {
 							</div>
 						)}
 					</div>
-
-					{/* <img
-						type="button"
-						className="w-10 h-10 rounded-full cursor-pointer"
-						src={icon}
-						height="100%"
-						width="100%"
-						alt="User dropdown"
-					/>
-
-					<div className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-						<div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-							<div>Bonnie Green</div>
-							<div className="font-medium truncate">name@flowbite.com</div>
-						</div>
-						<ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
-							<li>Dashboard</li>
-							<li>Settings</li>
-							<li>Earnings</li>
-						</ul>
-						<div className="py-1">Sign out</div>
-					</div> */}
 				</div>
 			</div>
 		</>
