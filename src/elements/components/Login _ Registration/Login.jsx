@@ -160,9 +160,7 @@ const Login = () => {
 							Continue
 						</button>
 						<p className="status">{status}</p>
-						{invalidPasswordError && (
-							<p className="error-message">Invalid password.</p>
-						)}
+
 						<div className="text-sm font-medium text-gray-500 dark:text-gray-300">
 							Not registered?{' '}
 							<Link

@@ -1,12 +1,16 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AddUser from '../elements/AddUser'
 import UserTable from '../elements/components/Tables/UserTable'
+import WithdrawlTable from '../elements/components/Tables/WithdrawlTable'
+
 const AdminPanel = () => {
 	const endPoint = process.env.REACT_APP_BASE_URL
 	const navigate = useNavigate()
 	const token = localStorage.getItem('user-token')
 	const [active, setActive] = useState('home')
+	const [requests, setRequests] = useState([])
 	const [users, setUsers] = useState([])
 
 	const fetchUsers = async () => {
@@ -45,6 +49,17 @@ const AdminPanel = () => {
 			})
 	}
 
+	const fetchWithdrawlRequests = async () => {
+		try {
+			const url = `http://${endPoint}:8080/user/`
+			const response = await axios.get(url)
+			setRequests(response.data)
+			console.log(users)
+		} catch (error) {
+			console.error('Error fetching data:', error)
+		}
+	}
+
 	useEffect(() => {
 		fetchUsers()
 	}, [])
@@ -71,7 +86,7 @@ const AdminPanel = () => {
 								<div onClick={() => setActive('home')}>Home</div>
 							</li>
 							<li className="cursor-pointer hover:text-secondary-dark focus:text-secondary-dark py-4">
-								<div onClick={() => setActive('allusers')}>All Users</div>
+								<div onClick={() => setActive('allUsers')}>All Users</div>
 							</li>
 							<li className="cursor-pointer hover:text-secondary-dark focus:text-secondary-dark py-4">
 								<div onClick={() => setActive('Approval')}>
@@ -80,8 +95,8 @@ const AdminPanel = () => {
 							</li>
 						</ul>
 					</div>
-					<div className="w-5/6 p-4  ">
-						{active === 'allusers' && (
+					<div className="w-5/6 px-4  ">
+						{active === 'allUsers' && (
 							<div className="flex flex-col flex-wrap w-full h-full">
 								<div className="h-1/5 border-b border-gray-800 flex justify-end p-4 ">
 									<button
@@ -94,6 +109,23 @@ const AdminPanel = () => {
 								</div>
 								<div className="h-4/5 py-4">
 									<UserTable users={users} setUsers={setUsers} />
+								</div>
+							</div>
+						)}
+						{active === 'addUser' && <AddUser setActive={setActive} />}
+						{active === 'Approval' && (
+							<div className="flex flex-col flex-wrap w-full h-full">
+								<div className="h-1/5 border-b border-gray-800 flex justify-end p-4 ">
+									<button
+										type="button"
+										className=" m-0 w-40 h-12 rounded-md text-lg text-white bg-sky-600 px-2 font-medium py-1"
+										onClick={() => setActive('addUser')}
+									>
+										+ Add User
+									</button>
+								</div>
+								<div className="h-4/5 py-4">
+									<WithdrawlTable users={users} setUsers={setRequests} />
 								</div>
 							</div>
 						)}
