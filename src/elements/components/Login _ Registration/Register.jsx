@@ -10,35 +10,39 @@ const Register = () => {
 	const [lastName, setLastName] = useState('')
 	const [email, setEmail] = useState('')
 	const [phoneNumber, setPhoneNumber] = useState('')
-	const [roleType, setRoleType] = useState('')
+	const [roleType, setRoleType] = useState('worker')
 	const [password1, setPassword1] = useState('')
 	const [password2, setPassword2] = useState('')
-	const [confirmedPassword, setConfirmedPassword] = useState('')
+	const [password, setPassword] = useState('')
 	const [status, setStatus] = useState('')
 
-	const handleSubmit = async () => {
+	const handleSubmit = async (e) => {
+		console.log(password, password1, password2)
+		e.preventDefault()
+
 		try {
 			const response = await axios.post(
-				`http://localhost:8080/user/register/`,
+				`http://localhost:8080/user/auth/register/`,
 				{
 					firstName,
 					lastName,
 					email,
 					phoneNumber,
 					roleType,
-					confirmedPassword,
+					password,
 				}
 			)
 
 			if (response.status === 201) {
 				setStatus('Registration Successful!')
+
 				Swal.fire({
 					icon: 'success',
 					title: status,
 					showConfirmButton: false,
 					timer: 2000,
 				}).then(() => {
-					navigate('/home')
+					navigate('/login')
 				})
 			} else {
 				setStatus('Registration failed.')
@@ -118,10 +122,10 @@ const Register = () => {
 	}
 
 	const hanldePasswordConfirmation = (e) => {
-		password1 && setPassword2(e.target.value)
-
+		const newPassword2 = e.target.value
+		setPassword2(password2)
 		if (password1 === password2) {
-			setConfirmedPassword(e.target.value)
+			setPassword(newPassword2)
 		}
 	}
 	return (
@@ -134,7 +138,10 @@ const Register = () => {
 
 					<div className="w-full bg-teal-950 border-gray-500 rounded-b-lg shadow md:mt-0 sm:max-w-md xl:p-0">
 						<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-							<form className="space-y-4 md:space-y-6" action={handleSubmit}>
+							<form
+								className="space-y-4 md:space-y-6"
+								onSubmit={(event) => handleSubmit(event)}
+							>
 								<div>
 									<label
 										htmlFor="countries"
@@ -147,10 +154,10 @@ const Register = () => {
 										className="bg-gray-100 border-2  border border-teal-600 text-gray-900 text-sm rounded-lg  focus:outline-none focus:ring-1 focus:ring-secondary-light block w-full p-2.5 "
 										onChange={(e) => setRoleType(e.target.value)}
 									>
-										<option value="serviceprovider" selected>
-											Service Provider
+										<option value="worker" selected>
+											Worker
 										</option>
-										<option value="buyer">Buyer</option>
+										<option value="employer">Employer</option>
 									</select>
 								</div>
 								<div className="flex justify-between">
@@ -262,36 +269,12 @@ const Register = () => {
 									</div>
 								</div>
 
-								<div className="flex items-center justify-between">
-									<div className="flex items-start">
-										<div className="flex items-center h-5">
-											<input
-												id="remember"
-												aria-describedby="remember"
-												type="checkbox"
-												className="w-4 h-4 border border-gray-300 rounded bg-gray-50 accent-teal-400 focus:ring-3 focus:ring-primary-300 "
-												required=""
-											/>
-										</div>
-										<div className="ml-3 text-sm">
-											<label
-												htmlFor="remember"
-												className="block mb-1 text-sm font-light text-white "
-											>
-												By{' '}
-												<span className="text-secondary-light font-medium">
-													Creating an Account,
-												</span>{' '}
-												you accept that you read and agree to our{' '}
-												<span className="text-secondary-light">
-													Terms of Use.
-												</span>
-											</label>
-										</div>
-									</div>
-								</div>
 								<div className="flex justify-center ">
-									<button className="text-lg bg-secondary-light px-10 py-2 font-bold text-white rounded-xl">
+									<button
+										className="text-lg bg-secondary-light px-10 py-2 font-bold text-white rounded-xl"
+										onClick={(e) => handleSubmit(e)}
+										type="submit"
+									>
 										Register
 									</button>
 								</div>

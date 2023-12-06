@@ -6,10 +6,26 @@ import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined'
 import VerifiedIcon from '@mui/icons-material/Verified'
 import Chip from '@mui/material/Chip'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import icon from '../../../images/icon.jpg'
+import Footer from '../Footer/footer'
+import Header2 from '../Header/Header_2'
+
 const Profile = () => {
 	return (
 		<>
+			<Header2 />
+			<div className="px-8 pt-3">
+				<Link to={'/dashboard'} className="underline hover:text-blue-700">
+					Back
+				</Link>
+				<button
+					className="bg-slate-500 px-2 py-1 rounded-md text-white scale-100 font-semibold active:scale-90 cursor-pointer float-right
+                        "
+				>
+					<Link to={'/settings'}>Edit Profile</Link>
+				</button>
+			</div>
 			<div className="h-full flex flex-wrap w-full p-5 text-primary">
 				<div className="w-4/12 mx-auto pr-4 ">
 					<div className="h-full border-2 shadow-xl rounded-xl py-8 px-6 divide-y   ">
@@ -318,6 +334,7 @@ const Profile = () => {
 					</div> */}
 				</div>
 			</div>
+			<Footer />
 		</>
 	)
 }

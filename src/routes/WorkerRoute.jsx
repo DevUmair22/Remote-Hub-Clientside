@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const WorkerRoute = (props) => {
-	const [role, setRole] = useState(false)
+	const [role, setRole] = useState()
 	const [isLoggedIn, setIsLoggedIn] = useState(false)
 	const navigate = useNavigate()
 
@@ -11,9 +11,10 @@ const WorkerRoute = (props) => {
 	}, [])
 
 	const checkUserRole = () => {
-		const user = localStorage.getItem('user')
+		const user = JSON.parse(localStorage.getItem('user'))
 		const userToken = localStorage.getItem('user-token')
 		setRole(user.role)
+		console.log(role, 'role')
 
 		if (userToken) {
 			setIsLoggedIn(true)

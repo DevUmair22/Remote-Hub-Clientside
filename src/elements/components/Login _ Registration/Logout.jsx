@@ -1,6 +1,6 @@
 import axios from 'axios'
-
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const Logout = () => {
 	const navigate = useNavigate()
@@ -20,6 +20,12 @@ const Logout = () => {
 			.then((response) => {
 				console.log(JSON.stringify(response.data.message))
 				if (response.status === 200) {
+					Swal.fire({
+						icon: 'success',
+						title: response.data.message,
+						showConfirmButton: false,
+						timer: 2000,
+					})
 					localStorage.clear()
 					navigate('/login')
 				} else {

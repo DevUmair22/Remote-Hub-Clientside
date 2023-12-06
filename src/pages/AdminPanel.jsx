@@ -15,10 +15,18 @@ const AdminPanel = () => {
 
 	const fetchUsers = async () => {
 		try {
-			const url = `http://${endPoint}:8080/user/`
-			const response = await axios.get(url)
-			setUsers(response.data)
-			console.log(users)
+			let config = {
+				method: 'get',
+				url: `http://${endPoint}:8080/admin/all`,
+				headers: {
+					token: `Bearer ${token}`,
+				},
+			}
+
+			axios.request(config).then((response) => {
+				setUsers(response.data)
+				console.log(users)
+			})
 		} catch (error) {
 			console.error('Error fetching data:', error)
 		}
@@ -51,10 +59,18 @@ const AdminPanel = () => {
 
 	const fetchWithdrawlRequests = async () => {
 		try {
-			const url = `http://${endPoint}:8080/user/`
-			const response = await axios.get(url)
-			setRequests(response.data)
-			console.log(users)
+			let config = {
+				method: 'get',
+				url: `http://${endPoint}:8080/admin/withdrawl/all/`,
+				headers: {
+					token: `Bearer ${token}`,
+				},
+			}
+
+			axios.request(config).then((response) => {
+				setRequests(response.data)
+				console.log(requests, 'response')
+			})
 		} catch (error) {
 			console.error('Error fetching data:', error)
 		}
@@ -62,6 +78,7 @@ const AdminPanel = () => {
 
 	useEffect(() => {
 		fetchUsers()
+		fetchWithdrawlRequests()
 	}, [])
 
 	return (
@@ -125,7 +142,11 @@ const AdminPanel = () => {
 									</button>
 								</div>
 								<div className="h-4/5 py-4">
-									<WithdrawlTable users={users} setUsers={setRequests} />
+									<WithdrawlTable
+										users={users}
+										requests={requests}
+										setRequests={setRequests}
+									/>
 								</div>
 							</div>
 						)}

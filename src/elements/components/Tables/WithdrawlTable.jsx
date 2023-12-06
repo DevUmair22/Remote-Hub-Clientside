@@ -1,14 +1,16 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import Swal from 'sweetalert2'
 
-const WithdrawlTable = ({ users, setUsers }) => {
+const WithdrawlTable = ({ users, requests, setRequests }) => {
+	console.log('requests', requests)
 	console.log('user', users)
+	const [action, setAction] = useState('')
 	const token = localStorage.getItem('user-token')
 	const endPoint = process.env.REACT_APP_BASE_URL
 
-	const handleDelete = async (id) => {
-		console.log('delete', id)
+	const handleApproval = async (id) => {
+		console.log('approved/disapproved', id)
 		Swal.fire({
 			title: 'Are you sure?',
 			text: "You won't be able to revert this!",
@@ -16,16 +18,17 @@ const WithdrawlTable = ({ users, setUsers }) => {
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33',
-			confirmButtonText: 'Yes, delete it!',
+			confirmButtonText: 'Yes',
 		}).then((result) => {
 			if (result.isConfirmed) {
 				try {
 					let config = {
-						method: 'delete',
-						url: `http://${endPoint}:8080/admin/delete/${id}`,
+						method: 'post',
+						url: `http://${endPoint}:8080/admin/withdrawl/${id}`,
 						headers: {
 							token: `Bearer ${token}`,
 						},
+						data: { action: `${action}` },
 					}
 
 					axios
@@ -33,13 +36,13 @@ const WithdrawlTable = ({ users, setUsers }) => {
 						.then((response) => {
 							console.log(JSON.stringify(response.data))
 							if (response.status === 200) {
-								const updatedData = users.filter((u) => u._id !== id)
-								console.log(`Deleted user with id: ${id}`)
-								setUsers(updatedData)
+								const updatedData = requests.filter((r) => r._id !== id)
+								console.log(`Withdrawl request with id: ${id} is  `)
+								setRequests(updatedData)
 							}
 							Swal.fire({
-								title: 'Deleted!',
-								text: `Deleted user with id: ${id}`,
+								title: `${action}`,
+								text: `${action} request with id: ${id}`,
 								icon: 'success',
 							})
 						})
@@ -75,7 +78,7 @@ const WithdrawlTable = ({ users, setUsers }) => {
 								Name
 							</th>
 							<th scope="col" class="px-10 py-3">
-								Position
+								Amount
 							</th>
 							{/* <th scope="col" class="px-6 py-3">
 								Status
@@ -86,48 +89,59 @@ const WithdrawlTable = ({ users, setUsers }) => {
 						</tr>
 					</thead>
 					<tbody>
-						{users &&
-							users.map((user, index) => (
-								<tr
-									class="bg-white border-b text-gray-900 hover:bg-gray-50 "
-									key={index}
-								>
-									<th
-										scope="row"
-										class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap "
+						{requests &&
+							requests.map((request, index) => {
+								const user = users.find((user) => user._id === request.userId)
+								return (
+									<tr
+										class="bg-white border-b text-gray-900 hover:bg-gray-50 "
+										key={index}
 									>
-										<div class="ps-3">
-											<div class="text-base font-semibold">
-												{user.firstName} {user.lastName}
+										<th
+											scope="row"
+											class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap "
+										>
+											<div class="ps-3">
+												<div class="text-base font-semibold">
+													{user.firstName} {user.lastName}
+												</div>
+												<div class="font-normal text-gray-500">
+													{user.email}
+												</div>
 											</div>
-											<div class="font-normal text-gray-500">{user.email}</div>
-										</div>
-									</th>
-									<td class="px-10 py-4 ">{user.role}</td>
-									{/* <td class="px-6 py-4">
+										</th>
+										<td class="px-10 py-4 ">{request.amount}</td>
+										{/* <td class="px-6 py-4">
 										<div class="flex items-center">
 											<div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>{' '}
 											Online
 										</div>
 									</td> */}
-									<td class="pl-2 py-4 pr-12 flex">
-										<button
-											className="bg-green-700 px-3 py-2 rounded-md text-white scale-100 font-semibold active:scale-90 mx-auto cursor-pointer"
-											onClick={() => handleDelete(user._id)}
-										>
-											{' '}
-											Approve
-										</button>
-										<button
-											className="bg-orange-600 px-3 py-2 rounded-md text-white scale-100 mx-auto font-semibold active:scale-90 cursor-pointer"
-											onClick={() => handleDelete(user._id)}
-										>
-											{' '}
-											DisApprove
-										</button>
-									</td>
-								</tr>
-							))}
+										<td class="pl-2 py-4 pr-12 flex">
+											<button
+												className="bg-green-700 px-3 py-2 rounded-md text-white scale-100 font-semibold active:scale-90 mx-auto cursor-pointer"
+												onClick={() => {
+													setAction('Approved')
+													handleApproval(request._id)
+												}}
+											>
+												{' '}
+												Approve
+											</button>
+											<button
+												className="bg-orange-600 px-3 py-2 rounded-md text-white scale-100 mx-auto font-semibold active:scale-90 cursor-pointer"
+												onClick={() => {
+													setAction('Disapproved')
+													handleApproval(request._id)
+												}}
+											>
+												{' '}
+												DisApprove
+											</button>
+										</td>
+									</tr>
+								)
+							})}
 					</tbody>
 				</table>
 			</div>

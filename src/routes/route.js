@@ -1,15 +1,19 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
-import AdminRoute from './AdminRoute'
-import ProtectedRoute from './ProtectedRoute'
-import WorkerRoute from './WorkerRoute'
 import DashBoard from "../elements/DashBoard"
 import Login from "../elements/components/Login _ Registration/Login"
 import Logout from "../elements/components/Login _ Registration/Logout"
 import Register from "../elements/components/Login _ Registration/Register"
 import Profile from "../elements/components/Service Profile/Profile"
 import AdminPanel from '../pages/AdminPanel'
+import Earnings from '../pages/Earnings.jsx'
 import Home from "../pages/Home.jsx"
+import Jobs from "../pages/Jobs.jsx"
 import Services from "../pages/Services"
+import Settings from "../pages/Settings.jsx"
+import Withdrawl from '../pages/Withdrawl.jsx'
+import AdminRoute from './AdminRoute'
+import ProtectedRoute from './ProtectedRoute'
+import WorkerRoute from './WorkerRoute'
 
 function AppRoutes() {
    return (
@@ -25,14 +29,31 @@ function AppRoutes() {
                   <Logout />
                </ProtectedRoute>
             } />
+            <Route path="/settings" element={
+               <ProtectedRoute>
+                  <Settings />
+               </ProtectedRoute>
+            } />
             <Route path="/dashboard" element={
                <ProtectedRoute>
                   <DashBoard />
                </ProtectedRoute>} />
 
-            <Route path="/profile" element={
+            <Route path="/myprofile" element={
                <WorkerRoute>
                   <Profile />
+               </WorkerRoute>} />
+            <Route path="/jobs" element={
+               <WorkerRoute>
+                  <Jobs />
+               </WorkerRoute>} />
+            <Route path="/earnings" element={
+               <WorkerRoute>
+                  <Earnings />
+               </WorkerRoute>} />
+            <Route path="/withdrawl" element={
+               <WorkerRoute>
+                  <Withdrawl />
                </WorkerRoute>} />
             <Route path="/adminPanel" element={
                <AdminRoute>

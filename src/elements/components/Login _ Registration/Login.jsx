@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import MainLayout from '../Layout/Layout.jsx'
 
 const Login = () => {
@@ -38,7 +39,7 @@ const Login = () => {
 		}
 	}, [])
 
-	const handleLogin = async () => {
+	const handleLogin = async (e) => {
 		try {
 			const response = await axios.post(
 				`http://${endPoint}:8080/user/auth/login/`,
@@ -49,28 +50,43 @@ const Login = () => {
 			)
 
 			if (response.status === 200) {
-				const user = JSON.stringify(response.data.userData)
 				console.log('Response Data : ', response.data)
-				setStatus('Login successful!')
 
+				const user = JSON.stringify(response.data.userData)
 				localStorage.setItem('user-token', response.data.accessToken)
 				localStorage.setItem('isAdmin', response.data.userData.isAdmin)
 				localStorage.setItem('user', user)
+				Swal.fire({
+					icon: 'success',
+					title: response.data.message,
+					showConfirmButton: false,
+					timer: 2000,
+				})
 
 				setTimeout(() => {
 					window.location.href = '/dashboard'
 				}, 500)
 
-				// if (rememberMe) {
-				// 	sessionStorage.setItem('rememberedEmail', email)
-				// 	sessionStorage.setItem('rememberedPassword', password)
-				// }
-			} else {
-				setStatus('Login failed. Please check your credentials.')
+				if (rememberMe) {
+					sessionStorage.setItem('rememberedEmail', email)
+					sessionStorage.setItem('rememberedPassword', password)
+				}
 			}
 		} catch (error) {
 			console.log('error', error.response)
-			setStatus(error.response)
+			Swal.fire({
+				icon: 'error',
+				title: error.message,
+				showConfirmButton: false,
+				timer: 2000,
+			})
+		}
+	}
+
+	const handleKeyPress = (event) => {
+		if (event.key === 'Enter') {
+			event.preventDefault()
+			handleLogin()
 		}
 	}
 
@@ -78,7 +94,7 @@ const Login = () => {
 		<MainLayout>
 			<div className="flex flex-wrap justify-center py-10">
 				<div className="w-full max-w-sm p-4 border rounded-lg shadow sm:p-6 md:p-8 bg-teal-950 border-gray-500">
-					<form className="space-y-6" action="#">
+					<div className="space-y-6">
 						<h5 className="text-2xl font-bold text-gray-100 text-center">
 							Sign In
 						</h5>
@@ -97,6 +113,7 @@ const Login = () => {
 								className="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-secondary-light focus:border-secondary-light block w-full p-2.5"
 								placeholder="name@company.com"
 								required
+								onKeyDown={handleKeyPress}
 							/>
 						</div>
 						<div>
@@ -115,6 +132,7 @@ const Login = () => {
 									onChange={(e) => setPassword(e.target.value)}
 									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-secondary-light focus:border-secondary-light block w-full p-2.5 "
 									required
+									onKeyDown={handleKeyPress}
 								/>
 
 								<FontAwesomeIcon
@@ -153,7 +171,6 @@ const Login = () => {
 							</Link>
 						</div>
 						<button
-							type="submit"
 							className=" flex mx-auto w-[2/4] text-white bg-secondary-light scale-100 hover:bg-secondary-dark focus:bg-secondary-dark hover:text-gray-100 font-bold rounded-lg text-md px-10 py-2 text-center "
 							onClick={handleLogin}
 						>
@@ -170,7 +187,7 @@ const Login = () => {
 								Create account
 							</Link>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</MainLayout>
