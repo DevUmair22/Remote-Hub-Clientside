@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Earnings from '../pages/Earnings.jsx'
+import Earnings from '../pages/Worker/Earnings.jsx'
 import TopTalent from './components/Carousels/TopTalent.jsx'
 import AllProfessionals from './components/Categories/AllProfessionals'
 import Categories from './components/Categories/Categories'
@@ -50,14 +50,24 @@ const DashBoard = () => {
 			) : (
 				<div>
 					{employer && page === 'main' && (
-						<>
-							<div className="text-center text-3xl font-semibold mt-5 py-4">
-								Good Morning, {user.firstName}
+						<div className="flex flex-wrap justify-center  p-4">
+							<div className="h-screen w-full flex flex-wrap ">
+								<div className="text-center text-3xl font-semibold mb-4 underline decoration-secondary-light py-2 w-full">
+									Welcome, {user.firstName}
+								</div>
+								<div className="w-full flex flex-wrap">
+									<div className="w-3/12 flex h-96 ">
+										<SideMenu />
+									</div>
+									<div className="flex flex-wrap w-9/12 px-2"></div>
+								</div>
 							</div>
-							<TopTalent />
-							<Categories />
-							<AllProfessionals />
-						</>
+							<div>
+								<TopTalent />
+								<Categories />
+								<AllProfessionals />
+							</div>
+						</div>
 					)}
 					{worker && page === 'main' && (
 						<div className="flex flex-wrap justify-center p-4">

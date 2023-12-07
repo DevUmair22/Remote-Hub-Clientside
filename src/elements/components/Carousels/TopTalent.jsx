@@ -30,7 +30,7 @@ const proData = [
 ]
 const TopTalent = () => {
 	return (
-		<div className="w-full h-full py-10 px-10">
+		<div className="w-full py-10 ">
 			<div className="border-2 py-5 px-5 flex-wrap flex-col h-full bg-white rounded-xl">
 				<div className="text-3xl text-center font-bold w-full py-2 mx-auto">
 					Highly Skilled Talent of{' '}

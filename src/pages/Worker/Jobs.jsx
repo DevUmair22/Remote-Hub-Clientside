@@ -1,7 +1,7 @@
 import React from 'react'
-import Footer from '../elements/components/Footer/footer'
-import Header2 from '../elements/components/Header/Header_2'
-import SideMenu from '../elements/components/SideMenu'
+import Footer from '../../elements/components/Footer/footer'
+import Header2 from '../../elements/components/Header/Header_2'
+import SideMenu from '../../elements/components/SideMenu'
 
 const Jobs = () => {
 	return (

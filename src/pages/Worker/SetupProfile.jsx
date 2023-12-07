@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-const SellerProfile = () => {
+import Footer from '../../elements/components/Footer/footer'
+import Header2 from '../../elements/components/Header/Header_2'
+
+const SetupProfile = () => {
 	const [divs, setDivs] = useState(1)
 	const [divss, setDivss] = useState(1)
 	const [portfolioDiv, setPortfolioDiv] = useState(1)
@@ -259,7 +262,7 @@ const SellerProfile = () => {
 
 	return (
 		<>
-			{' '}
+			<Header2 />{' '}
 			<div className="py-2 text-4xl px-8 text-primary mt-4 font-semibold border-b ">
 				Seller Profile
 			</div>
@@ -484,8 +487,9 @@ const SellerProfile = () => {
 					</button>
 				</div>
 			</form>
+			<Footer />
 		</>
 	)
 }
 
-export default SellerProfile
+export default SetupProfile

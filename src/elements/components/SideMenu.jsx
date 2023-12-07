@@ -1,7 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 const SideMenu = () => {
-	const navigation = [
+	const user = JSON.parse(localStorage.getItem('user'))
+	const worker = user.role === 'worker'
+
+	const employerNavigation = [
+		{
+			title: 'My Hirings',
+			link: '/hirings',
+		},
+		{
+			title: 'Purchase History',
+			link: '/purchasehistory',
+		},
+		{
+			title: 'Advanced Search',
+			link: '/advancedsearch',
+		},
+	]
+	const workerNavigation = [
 		{
 			title: 'My Jobs--|',
 			link: '/jobs',
@@ -19,19 +36,27 @@ const SideMenu = () => {
 			link: '/withdrawl',
 		},
 	]
-
 	return (
-		<div>
-			<div className=" border rounded-lg shadow-xl bg-gray-50 px-4 w-full py-10">
+		<div className="flex">
+			<div className=" border rounded-lg my-auto shadow-xl bg-gray-50 px-4 w-full py-10">
 				<ul className="divide-y px-4">
-					{navigation.map((item, index) => (
-						<li
-							className="cursor-pointer font-semibold text-xl py-4 hover:text-secondary-dark hover:bg-gray-100 text-gray-800"
-							key={index}
-						>
-							<Link to={item.link}>{item.title}</Link>
-						</li>
-					))}
+					{worker
+						? workerNavigation.map((item, index) => (
+								<li
+									className="cursor-pointer font-semibold text-xl py-4 hover:text-secondary-dark hover:bg-gray-100 text-gray-800"
+									key={index}
+								>
+									<Link to={item.link}>{item.title}</Link>
+								</li>
+						  ))
+						: employerNavigation.map((item, index) => (
+								<li
+									className="cursor-pointer font-semibold text-xl py-4 hover:text-secondary-dark hover:bg-gray-100 text-gray-800"
+									key={index}
+								>
+									<Link to={item.link}>{item.title}</Link>
+								</li>
+						  ))}
 				</ul>
 			</div>
 		</div>

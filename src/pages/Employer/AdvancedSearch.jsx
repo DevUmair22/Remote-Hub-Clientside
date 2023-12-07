@@ -1,14 +1,8 @@
-import React, { useState } from 'react'
-import Footer from '../elements/components/Footer/footer'
-import Header2 from '../elements/components/Header/Header_2'
-import SideMenu from '../elements/components/SideMenu'
-
-const Withdrawl = () => {
-	const [page, setPage] = useState('main')
-	const pageHandler = (data) => {
-		setPage(data)
-	}
-
+import React from 'react'
+import Footer from '../../elements/components/Footer/footer'
+import Header2 from '../../elements/components/Header/Header_2'
+import SideMenu from '../../elements/components/SideMenu'
+const AdvancedSearch = () => {
 	return (
 		<>
 			<Header2 />
@@ -55,4 +49,4 @@ const Withdrawl = () => {
 	)
 }
 
-export default Withdrawl
+export default AdvancedSearch

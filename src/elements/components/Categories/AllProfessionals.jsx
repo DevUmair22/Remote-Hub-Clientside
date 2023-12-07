@@ -70,7 +70,7 @@ export const proData = [
 ]
 const AllProfessionals = () => {
 	return (
-		<div className="px-10 py-10 w-full h-full border border-1 flex flex-wrap">
+		<div className="px-10 py-10 w-full border border-1 flex flex-wrap">
 			{proData.map((item) => (
 				<div className="w-1/2">
 					<BasicCard data={item} />

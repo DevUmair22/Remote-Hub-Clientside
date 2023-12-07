@@ -1,6 +1,8 @@
 import Rating from '@mui/material/Rating/Rating'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import icon from '../../../../images/icon.jpg'
+
 const BasicCard = ({ data }) => {
 	return (
 		<div className="h-auto w-100 px-5 ">
@@ -35,7 +37,7 @@ const BasicCard = ({ data }) => {
 						type="submit"
 						className="mx-auto rounded-md bg-secondary-light px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-secondary-dark active:bg-teal-900 active:text-white focus:ring-2 focus:ring-teal-900 "
 					>
-						View Full Profile
+						<Link to={`/profile/${data.id}`}>View Full Profile</Link>
 					</button>
 				</div>
 			</div>

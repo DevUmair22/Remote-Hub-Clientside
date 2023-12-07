@@ -5,26 +5,60 @@ import PaymentOutlinedIcon from '@mui/icons-material/PaymentOutlined'
 import RoomOutlinedIcon from '@mui/icons-material/RoomOutlined'
 import VerifiedIcon from '@mui/icons-material/Verified'
 import Chip from '@mui/material/Chip'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import icon from '../../../images/icon.jpg'
 import Footer from '../Footer/footer'
 import Header2 from '../Header/Header_2'
-
 const Profile = () => {
+	const user = JSON.parse(localStorage.getItem('user'))
+	const worker = user.role === 'worker'
+	const [isHired, setIsHired] = useState(false)
 	return (
 		<>
 			<Header2 />
-			<div className="px-8 pt-3">
-				<Link to={'/dashboard'} className="underline hover:text-blue-700">
+			<div className="pl-8 pt-3 flex flex-wrap w-full items-center">
+				<Link
+					to={'/dashboard'}
+					className="underline hover:text-blue-700 w-1/12"
+				>
 					Back
 				</Link>
-				<button
-					className="bg-slate-500 px-2 py-1 rounded-md text-white scale-100 font-semibold active:scale-90 cursor-pointer float-right
+				{worker ? (
+					<button
+						className="bg-slate-500 px-2 py-1 rounded-md text-white scale-100 font-semibold active:scale-90 cursor-pointer float-right
                         "
-				>
-					<Link to={'/settings'}>Edit Profile</Link>
-				</button>
+					>
+						<Link to={'/settings'}>Edit Profile</Link>
+					</button>
+				) : !isHired ? (
+					<div className="flex w-11/12 justify-end">
+						<button
+							className="bg-green-600 px-2 py-1 rounded-md text-white scale-100 font-semibold active:scale-90 mx-8 cursor-pointer 
+                  "
+							onClick={() => setIsHired(true)}
+						>
+							{/* <Link to={'/settings'}> */}
+							Hire Now
+							{/* </Link> */}
+						</button>
+					</div>
+				) : (
+					<div className="flex w-11/12 justify-end flex-wrap">
+						<button
+							className="bg-orange-400 px-2 py-1 rounded-md text-white scale-100 font-semibold active:scale-90 mx-2 cursor-pointer float-right
+                  "
+						>
+							<Link to={`/report/${user.id}`}>Report</Link>
+						</button>
+						<button
+							className="bg-red-700 px-3 py-2 rounded-md text-white scale-100 font-semibold active:scale-90 cursor-pointer
+                  "
+						>
+							<Link to={`/terminate/${user.id}`}>Terminate Now</Link>
+						</button>
+					</div>
+				)}
 			</div>
 			<div className="h-full flex flex-wrap w-full p-5 text-primary">
 				<div className="w-4/12 mx-auto pr-4 ">
@@ -275,63 +309,43 @@ const Profile = () => {
 								</div>
 							</div>
 						</div>
-						<div className="px-4 py-6">
-							<h1 className="text-lg font-semibold pl-2">Merik Solutions</h1>
-							<p className="text-sm text-secondary-light pl-2 font-medium">
-								{' '}
-								2yrs-5months
-							</p>
+						<div className="flex-col py-8 my-2 px-8  divide-y divide-secondary-light">
+							<h1 className="text-2xl underline decoration-secondary-light pb-4 font-semibold text-primary">
+								Portfolio
+							</h1>
+							<div className="px-4 py-6 border flex flex-wrap justify-center rounded-xl">
+								<div className="w-1/2 mx-auto">
+									<div className="flex ">
+										<p className="text-xl px-2 font-semibold">Project Title</p>
+									</div>
+									<div className="flex flex-col pl-2 py-2 pr-8">
+										<p className="text-md  font-semibold">
+											Project Description{' '}
+										</p>
+										<div className="border rounded-lg border-secondary-light h-12"></div>
+									</div>
 
-							<div className="px-8 pt-6">
-								<h1 className="text-lg font-semibold ">Backend Developer</h1>
-								<p className="text-sm font-medium text-secondary-light">
-									Jan 2022 - Present
-								</p>
-								<div>
-									<p className="py-3 text-sm">
-										<b>Skills Involved: </b>Scrum · Agile Methodologies ·
-										Customer Relationship Management (CRM) · Microsoft Teams ·
-										Telecommunications · English · Jira · Slack · Google
-										Workplace Scrum · Agile Methodologies · Customer
-										Relationship Management (CRM) · Microsoft Teams ·
-										Telecommunications · English · Jira · Slack · Google
-										Workplace
-									</p>
-									<p className="py-3 text-sm">
-										<b>Role: </b>
-										My role is to blah blah blah blah blah blah blah blah blah
-										blah blahMy role is to blah blah blah blah blah blah blah
-										blah blah blah blahMy role is to blah blah blah blah blah
-										blah blah blah blah blah blah
-									</p>
+									<div className="flex flex-col pl-2 py-2 pr-8 ">
+										<p className="text-md  font-semibold">Your Role</p>
+										<div className="border rounded-lg border-secondary-light h-12"></div>
+									</div>
+									<div className="flex flex-col pl-2 py-2 pr-8 ">
+										<p className="text-md px-2 font-semibold">
+											Technologies Involved{' '}
+										</p>
+										<div className="border rounded-lg border-secondary-light h-full p-2">
+											<Chip label="HardWorking" variant="outlined" />
+										</div>
+									</div>
+								</div>
+								<div className="w-1/2 mx-auto">
+									<div className="border rounded-lg border-secondary-light h-full">
+										Image
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					{/* <div className="mt-2 px-5 text-center">
-						<h1 className="text-lg font-bold">{data.name}</h1>
-						<h3>{data.role} </h3>
-					</div>
-					<div className="text-center">
-						<Rating name="read-only" value={3} readOnly />
-					</div>
-					<div className="flex flex-wrap pt-10  px-6">
-						<div className="text-left text-md font-bold">
-							Experience: {data.exp} <br />
-							Hourly Rate: {data.rate}
-							<br />
-							Total Jobs: {data.jobs}
-							<br />
-						</div>
-					</div>
-					<div className="flex w-full py-10">
-						<button
-							type="submit"
-							className="mx-auto rounded-md bg-secondary-light px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-secondary-dark active:bg-teal-900 active:text-white focus:ring-2 focus:ring-teal-900 "
-						>
-							View Full Profile
-						</button>
-					</div> */}
 				</div>
 			</div>
 			<Footer />

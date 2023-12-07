@@ -23,7 +23,7 @@ const categories = [
 
 const Categories = () => {
 	return (
-		<div className="w-full h-full px-10 py-10">
+		<div className="w-full  py-10">
 			<div className="border-2 py-5 px-5 flex-wrap flex-col h-full shadow-xl rounded-md">
 				<div className="text-3xl text-center font-bold w-full py-2 mx-auto">
 					All Categories By Profession

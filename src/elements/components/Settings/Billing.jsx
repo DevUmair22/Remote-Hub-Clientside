@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 const Billing = () => {
 	return (
@@ -109,7 +108,7 @@ const Billing = () => {
 					</div>
 				</form>
 			</div>
-			<div>
+			{/* <div>
 				<div className="py-4 text-4xl px-8 text-primary mt-4 font-semibold">
 					Payement Methods
 				</div>
@@ -128,7 +127,7 @@ const Billing = () => {
 						+ Add a payment method
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</>
 	)
 }

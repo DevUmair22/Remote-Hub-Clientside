@@ -3,14 +3,20 @@ import DashBoard from "../elements/DashBoard"
 import Login from "../elements/components/Login _ Registration/Login"
 import Logout from "../elements/components/Login _ Registration/Logout"
 import Register from "../elements/components/Login _ Registration/Register"
-import Profile from "../elements/components/Service Profile/Profile"
+import ProfilePage from "../elements/components/Profiles_Management/ProfilePage.jsx"
 import AdminPanel from '../pages/AdminPanel'
-import Earnings from '../pages/Earnings.jsx'
+import AdvancedSearch from "../pages/Employer/AdvancedSearch.jsx"
+import Hirings from "../pages/Employer/Hirings.jsx"
+import PurchaseHistory from "../pages/Employer/PurchaseHistory.jsx"
+import ReportUser from "../pages/Employer/ReportUser.jsx"
+import Terminate from "../pages/Employer/Terminate.jsx"
 import Home from "../pages/Home.jsx"
-import Jobs from "../pages/Jobs.jsx"
 import Services from "../pages/Services"
-import Settings from "../pages/Settings.jsx"
-import Withdrawl from '../pages/Withdrawl.jsx'
+import Earnings from '../pages/Worker/Earnings.jsx'
+import Jobs from "../pages/Worker/Jobs.jsx"
+import Settings from "../pages/Worker/Settings.jsx"
+import SetupProfile from "../pages/Worker/SetupProfile.jsx"
+import Withdrawl from '../pages/Worker/Withdrawl.jsx'
 import AdminRoute from './AdminRoute'
 import ProtectedRoute from './ProtectedRoute'
 import WorkerRoute from './WorkerRoute'
@@ -29,6 +35,22 @@ function AppRoutes() {
                   <Logout />
                </ProtectedRoute>
             } />
+
+
+
+            <Route path="/hirings" element={
+               <ProtectedRoute>
+                  <Hirings />
+               </ProtectedRoute>} />
+            <Route path="/advancedsearch" element={
+               <ProtectedRoute>
+                  <AdvancedSearch />
+               </ProtectedRoute>} />
+            <Route path="/purchasehistory" element={
+               <ProtectedRoute>
+                  <PurchaseHistory />
+               </ProtectedRoute>} />
+
             <Route path="/settings" element={
                <ProtectedRoute>
                   <Settings />
@@ -39,10 +61,26 @@ function AppRoutes() {
                   <DashBoard />
                </ProtectedRoute>} />
 
-            <Route path="/myprofile" element={
+
+            <Route path="/report/:id" element={
+               <ProtectedRoute>
+                  <ReportUser />
+               </ProtectedRoute>} />
+
+
+
+            {/* <Route path="/myprofile" element={
                <WorkerRoute>
-                  <Profile />
-               </WorkerRoute>} />
+                  <ProfilePage />
+               </WorkerRoute>} /> */}
+            <Route path="/profile/:id" element={
+               <ProtectedRoute>
+                  <ProfilePage />
+               </ProtectedRoute>} />
+            <Route path="/terminate/:id" element={
+               <ProtectedRoute>
+                  <Terminate />
+               </ProtectedRoute>} />
             <Route path="/jobs" element={
                <WorkerRoute>
                   <Jobs />
@@ -50,6 +88,10 @@ function AppRoutes() {
             <Route path="/earnings" element={
                <WorkerRoute>
                   <Earnings />
+               </WorkerRoute>} />
+            <Route path="/setupProfile/:id" element={
+               <WorkerRoute>
+                  <SetupProfile />
                </WorkerRoute>} />
             <Route path="/withdrawl" element={
                <WorkerRoute>

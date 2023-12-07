@@ -90,7 +90,7 @@ const UserProfile = ({ user }) => {
 				</label>{' '}
 				<button
 					type="button"
-					className="text-white bg-sky-500  hover:bg-sky-700 focus:bg-sky-700 w-1/12 focus:ring-2  focus:outline-none focus:ring-secondary-light font-semibold rounded-lg text-md px-2 py-1 text-center "
+					className="text-white bg-sky-500  hover:bg-sky-700 focus:bg-sky-700 w-1/12 focus:outline-none scale:90 active:scale-95 font-semibold rounded-lg text-md px-2 py-1 text-center "
 					onClick={() => setActive(!active)}
 				>
 					Edit Info

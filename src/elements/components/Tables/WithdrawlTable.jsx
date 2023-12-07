@@ -70,20 +70,20 @@ const WithdrawlTable = ({ users, requests, setRequests }) => {
 
 	return (
 		<div className="px-8">
-			<div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
-				<table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-					<thead class="text-xs text-gray-700 uppercase bg-gray-50 bg-gray-200 ">
+			<div className="relative overflow-x-auto shadow-md sm:rounded-lg ">
+				<table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
+					<thead className="text-xs text-gray-700 uppercase bg-gray-50 bg-gray-200 ">
 						<tr>
-							<th scope="col" class="px-10 py-3">
+							<th scope="col" className="px-10 py-3">
 								Name
 							</th>
-							<th scope="col" class="px-10 py-3">
+							<th scope="col" className="px-10 py-3">
 								Amount
 							</th>
-							{/* <th scope="col" class="px-6 py-3">
+							{/* <th scope="col" className="px-6 py-3">
 								Status
 							</th> */}
-							<th scope="col" class=" pl-36 py-3">
+							<th scope="col" className=" pl-36 py-3">
 								Action
 							</th>
 						</tr>
@@ -94,30 +94,30 @@ const WithdrawlTable = ({ users, requests, setRequests }) => {
 								const user = users.find((user) => user._id === request.userId)
 								return (
 									<tr
-										class="bg-white border-b text-gray-900 hover:bg-gray-50 "
+										className="bg-white border-b text-gray-900 hover:bg-gray-50 "
 										key={index}
 									>
 										<th
 											scope="row"
-											class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap "
+											className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap "
 										>
-											<div class="ps-3">
-												<div class="text-base font-semibold">
+											<div className="ps-3">
+												<div className="text-base font-semibold">
 													{user.firstName} {user.lastName}
 												</div>
-												<div class="font-normal text-gray-500">
+												<div className="font-normal text-gray-500">
 													{user.email}
 												</div>
 											</div>
 										</th>
-										<td class="px-10 py-4 ">{request.amount}</td>
-										{/* <td class="px-6 py-4">
-										<div class="flex items-center">
-											<div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>{' '}
+										<td className="px-10 py-4 ">{request.amount}</td>
+										{/* <td className="px-6 py-4">
+										<div className="flex items-center">
+											<div className="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>{' '}
 											Online
 										</div>
 									</td> */}
-										<td class="pl-2 py-4 pr-12 flex">
+										<td className="pl-2 py-4 pr-12 flex">
 											<button
 												className="bg-green-700 px-3 py-2 rounded-md text-white scale-100 font-semibold active:scale-90 mx-auto cursor-pointer"
 												onClick={() => {
