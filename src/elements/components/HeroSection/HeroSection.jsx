@@ -1,6 +1,9 @@
 import React from 'react'
 import SearchBar from '../SearchModule/SearchBar'
 const HeroSection = () => {
+	const handleSearchedData = (data) => {
+		console.log('Data received from child:', data)
+	}
 	return (
 		<div className="w-full h-[86vh] mx-auto p-10 text-white bg-green-950 flex items-center">
 			<div className="mx-auto w-[60%]">
@@ -10,7 +13,7 @@ const HeroSection = () => {
 					</h1>
 				</div>
 				<div className="">
-					<SearchBar />
+					<SearchBar onSearchedData={handleSearchedData} />
 					<div className="flex flex-wrap py-6 px-2 items-center">
 						<span className="text-md">Popular:</span>
 						<ul className="px-4 flex">

@@ -1,7 +1,6 @@
 import Footer from '../../elements/components/Footer/footer'
 import Header2 from '../../elements/components/Header/Header_2'
 import Billing from '../../elements/components/Settings/Billing'
-import Security from '../../elements/components/Settings/Security'
 import SellerProfile from '../../elements/components/Settings/SellerProfile'
 import UserProfile from '../../elements/components/Settings/UserProfile'
 
@@ -33,7 +32,7 @@ const Settings = () => {
 							</a>
 						</span>
 					</li>
-					<li className="pr-2 py-2 group scale-90 text-xl text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
+					{/* <li className="pr-2 py-2 group scale-90 text-xl text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 						<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
 							<a
 								href="#security"
@@ -42,7 +41,7 @@ const Settings = () => {
 								Security
 							</a>
 						</span>
-					</li>
+					</li> */}
 					<li className="pr-2 py-2 group scale-90 text-xl text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 						<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
 							<a
@@ -70,10 +69,10 @@ const Settings = () => {
 					<div id="account">
 						<UserProfile user={user} />
 					</div>
-
+					{/* 
 					<div id="security">
 						<Security />
-					</div>
+					</div> */}
 					<div id="sellerprofile">{worker && <SellerProfile />} </div>
 					<div id="billing" className="divide-y">
 						<Billing />
