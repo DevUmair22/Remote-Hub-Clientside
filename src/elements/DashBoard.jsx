@@ -63,8 +63,8 @@ const DashBoard = () => {
 								</div>
 							</div>
 							<div>
-								<TopTalent />
-								<Categories />
+								{/* <TopTalent /> */}
+								{/* <Categories /> */}
 								<AllProfessionals />
 							</div>
 						</div>

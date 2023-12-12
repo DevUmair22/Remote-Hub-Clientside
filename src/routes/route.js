@@ -5,7 +5,6 @@ import Logout from "../elements/components/Login _ Registration/Logout"
 import Register from "../elements/components/Login _ Registration/Register"
 import ProfilePage from "../elements/components/Profiles_Management/ProfilePage.jsx"
 import AdminPanel from '../pages/AdminPanel'
-import AdvancedSearch from "../pages/Employer/AdvancedSearch.jsx"
 import Hirings from "../pages/Employer/Hirings.jsx"
 import PurchaseHistory from "../pages/Employer/PurchaseHistory.jsx"
 import ReportUser from "../pages/Employer/ReportUser.jsx"
@@ -42,10 +41,10 @@ function AppRoutes() {
                <ProtectedRoute>
                   <Hirings />
                </ProtectedRoute>} />
-            <Route path="/advancedsearch" element={
+            {/* <Route path="/advancedsearch" element={
                <ProtectedRoute>
                   <AdvancedSearch />
-               </ProtectedRoute>} />
+               </ProtectedRoute>} /> */}
             <Route path="/purchasehistory" element={
                <ProtectedRoute>
                   <PurchaseHistory />

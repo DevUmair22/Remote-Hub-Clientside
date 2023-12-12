@@ -13,10 +13,6 @@ const SideMenu = () => {
 			title: 'Purchase History',
 			link: '/purchasehistory',
 		},
-		{
-			title: 'Advanced Search',
-			link: '/advancedsearch',
-		},
 	]
 	const workerNavigation = [
 		{

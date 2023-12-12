@@ -40,11 +40,11 @@ const Header2 = ({ worker, employer }) => {
 									<Link to={'/setupprofile'}> Set Up Profile</Link>
 								</span>
 							</div>
-							<div className="pr-2 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
+							{/* <div className="pr-2 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 								<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
 									<Link to={'/jobs'}> My Jobs</Link>
 								</span>
-							</div>
+							</div> */}
 							<div className="pr-2 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 								<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
 									<Link to={'/earnings'}> Earnings</Link>
@@ -63,11 +63,11 @@ const Header2 = ({ worker, employer }) => {
 									<Link to={'/register'}>Sign Up as Talent.</Link>
 								</span>
 							</div> */}
-							<div className="pr-2 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
+							{/* <div className="pr-2 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 								<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
 									<Link to={'/register'}>Advanced Search</Link>
 								</span>
-							</div>
+							</div> */}
 							<div className="pr-2 py-2 group scale-90 text-lg text-primary hover:text-primary hover:scale-95 cursor-pointer font-semibold">
 								<span className="bg-left-bottom bg-gradient-to-r  from-teal-500 to-teal-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
 									<Link to={'/hirings'}>My Hirings</Link>
